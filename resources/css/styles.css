@@ -13,15 +13,18 @@ body {
 }
 
 .icon-container {
-	display: flex;
+	display: none ;
 	justify-content: center;
 	align-items: center;
-	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	width: 50%;
+	width: 25%;
 	margin-inline: auto;
 	margin-block: 15vh;
+}
+
+#results {
+	display:none;
 }
 
 .icon {
