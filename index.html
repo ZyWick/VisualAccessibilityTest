@@ -3,57 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="resources\css\styles.css">
+<script src="resources\js\ast.js" defer></script>
 <title>Icon Compilation</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 5vh;
-    }
-
-    .icon-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .icon {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        background-color: #3498db;
-        margin: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #fff;
-        font-size: 24px;
-        text-transform: uppercase;
-    }
-</style>
 </head>
 <body>
+    <div id="start" class="centered">
+        <h3>Welcome to the Visual Accessibility for Astigmatism Testing App</h3>
+        <p> Your Name: 
+            <input id="name" type="text">
+        </p>
+        <p>
+            In <strong>myopic astigmatism</strong> - simple or compound –the eye's principal meridians (planes) focus light in front of the retina. <br>
+            <strong>Hyperopic astigmatism</strong> arises when one or both meridians focus light behind the retina. Like myopic astigmatism, this condition has two forms: Simple Hyperopic Astigmatism and Compound Hyperopic Astigmatism. Both focal points exist behind the retina at distinct virtual locations.
+            <br><strong>Mixed astigmatism</strong> combines farsightedness (hyperopia) in one meridian and nearsightedness (myopia) in the other. This results in both focal points lying at different positions—one behind and one in front of the retina.
+        </p>
+        <p> Astigmatism Type:    
+            <select id="type">
+                <option value="yourself" selected>I'm not sure</option>
+                <option value="similar">Myopic Astigmatism</option>
+                <option value="dissimilar">Hyperopic Astigmatism</option>
+                <option value="extra">Mixed Astigmatism</option>
+            </select>
+        <p>
+        Press the button to begin the test. You're goal is to tap the ______ button as 
+        QUICKLY and as ACCURATELY as possible. Please be sure not to change the orientation 
+        of the device or resize the window. For consistency, be sure to interact the same way 
+        throughout the test.
+             <br><br>        
+            <button id="start_button">Begin Test</button>
+        </p>
+    </div>
 
 <div class="icon-container">
-	<div class="icon-container" id="iconContainer">
+	<div class="icon-container" id="iconContainer" >
 	</div>
-	
-	<script>
-		const numbers = Array.from({length: 60}, (_, i) => i + 1);
-	
-		const iconContainer = document.getElementById('iconContainer');
-
-		numbers.forEach(number => {
-			const icon = document.createElement('div');
-			icon.classList.add('icon');
-			icon.innerText = number;
-			// Append the icon to the icon container
-			iconContainer.appendChild(icon);
-		});
-	</script>
 </div>
 
 </body>
