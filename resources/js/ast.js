@@ -1,8 +1,10 @@
-const numbers = Array.from({length: 8}, (_, i) => i + 1);
+const numbers = Array.from({length: 5}, (_, i) => i + 1);
 
 const iconContainer = document.getElementById('iconContainer');
 const startButton = document.getElementById('start_button');
 const resultsContainer = document.getElementById('results');
+const promptCont = document.getElementById('prompt-cont');
+let promptText;
 
 const startBox = document.getElementById('start');
 const numTrials = 5;
@@ -16,6 +18,7 @@ let accuracy;
 startButton.addEventListener("click", () => {
     startBox.style.display = "none";
     iconContainer.style.display = "flex";
+    displayPrompt();
     startTime = new Date();
     nextTrial ()
 })
@@ -28,26 +31,39 @@ iconContainer.addEventListener("click", (e) => {
     nextTrial ()
 })
 
-function displayIcons () {
-    let target = 1 + Math.floor(Math.random() * 8);
+function displayPrompt() {
+    const promptText = document.createElement('h1');
+    promptText.classList.add('prompt');
+    promptText.textContent = 'Click the Facebook icon';
+    promptCont.appendChild(promptText);
+}
 
-    numbers.forEach(number => {
-        const icon = document.createElement('button');
-        icon.classList.add('icon');
-        icon.innerText = number;
-        
-        // Append the icon to the icon container
-        if (target == number) { 
-            icon.classList.add('target');
-            icon.style.borderRadius = `40%`;
-        }
+function displayIcons() {
+    const iconNames = ['facebook', 'facebook-messenger', 'instagram', 'tiktok', 'twitter'];
+    const shuffledIcons = shuffleArray(iconNames);
+
+    shuffledIcons.forEach((iconName) => {
+        const icon = document.createElement('i');
+        icon.classList.add('fab', `fa-${iconName}`, 'icon');
+        icon.style.fontSize = "3.5em";
+        icon.style.cursor = "pointer";
         iconContainer.appendChild(icon);
     });
 }
 
+// Function to shuffle an array
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
 function nextTrial () {
-    if (totalTrial < numTrials)
-        displayIcons ()
+    if (totalTrial < numTrials) {
+        displayIcons ();
+    }   
     else done()
 }
 

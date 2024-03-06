@@ -30,13 +30,14 @@ body {
 .icon {
 	width: 80px;
 	height: 80px;
-	border-radius: 50%;
-	background-color: #3498db;
 	margin: 10px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	color: #fff;
-	font-size: 24px;
+	color: black;
 	text-transform: uppercase;
+}
+
+.prompt-container {
+	text-align: center; /* Center align the text within the container */
 }
