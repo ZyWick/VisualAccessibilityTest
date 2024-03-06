@@ -12,20 +12,21 @@ const numTrials = 5;
 let totalHit = 0;
 let totalTrial = 0;
 let startTime;
-let totalTime;
+let arrayOfTimes = [];
 let accuracy;
 
 startButton.addEventListener("click", () => {
     startBox.style.display = "none";
     iconContainer.style.display = "flex";
     displayPrompt();
-    startTime = new Date();
     nextTrial ()
 })
 
 iconContainer.addEventListener("click", (e) => {
-    if (e.target.classList.contains("target"))
+    if (e.target.classList.contains("target")) 
         totalHit++;
+    endTime = new Date();
+    arrayOfTimes.push(endTime - startTime);
     iconContainer.innerHTML = ``;
     totalTrial++;
     nextTrial ()
@@ -65,18 +66,26 @@ function shuffleArray(array) {
 
 function nextTrial () {
     if (totalTrial < numTrials) {
+        startTime = new Date();
         displayIcons ();
     }   
     else done()
 }
 
 function done() {
-    endTime = new Date();
-    totalTime = endTime - startTime;
     accuracy = totalHit / numTrials * 100;
+
+    let finalTimes = "", i;
+    for (i = 0; i < arrayOfTimes.length; i++){
+        if(i === arrayOfTimes.length - 1){
+            finalTimes += arrayOfTimes[i] + "ms";
+        }else{
+        finalTimes += arrayOfTimes[i] + "ms, ";}
+    }
+
     resultsContainer.innerHTML = `
         <h3>Test Results</h3>
-        Total time = ${totalTime}ms <br>
+        Times: ${finalTimes}<br>
         Accuracy = ${accuracy}%
     `
     resultsContainer.style.display = "block";
@@ -88,11 +97,12 @@ function done() {
 function saveToCsv(){
 	var encodedUri, link;
 	let csvContent = "data:text/csv;charset=utf-8,TestResults\n";
-	// arrayOfTimes.forEach(function (infoArray) {
-	// 	let row = infoArray + ",";
-    //     csvContent += row + "\r\n";
-    // });
-    csvContent+= `${totalTime},\r\n${accuracy}\r\n`
+	arrayOfTimes.forEach(function (infoArray) {
+		let row = infoArray + ",";
+        csvContent += row + "\r\n";
+    });
+
+    csvContent+= `${accuracy}\r\n`
 	encodedUri = encodeURI(csvContent);
 	
 	link = document.createElement("a");
