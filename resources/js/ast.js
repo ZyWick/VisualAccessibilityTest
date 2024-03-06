@@ -45,6 +45,9 @@ function displayIcons() {
     shuffledIcons.forEach((iconName) => {
         const icon = document.createElement('i');
         icon.classList.add('fab', `fa-${iconName}`, 'icon');
+        if(iconName === 'facebook') {
+            icon.classList.add('target');
+        }
         icon.style.fontSize = "3.5em";
         icon.style.cursor = "pointer";
         iconContainer.appendChild(icon);
