@@ -33,8 +33,11 @@ const colorConfigurations = [
   },
 ];
 
+const colorArr = ["red", "yellow", "blue", "black"]
+
 let promptText;
 let config;
+let colorSelect, icon, shape
 
 const startBox = document.getElementById("start");
 const numTrials = 5;
@@ -45,7 +48,7 @@ let arrayOfTimes = [];
 let accuracy;
 
 startButton.addEventListener("click", () => {
-  config = getRandomConfiguration();
+  config = getConfiguration();
   startBox.style.display = "none";
   iconContainer.style.display = "flex";
   displayPrompt();
@@ -87,14 +90,14 @@ function displayIcons() {
   });
 }
 
-function getRandomConfiguration() {
-  const shapeIndex = Math.floor(Math.random() * shapeConfigurations.length);
-  const colorIndex = Math.floor(Math.random() * colorConfigurations.length);
-  const configSplit = shapeConfigurations[shapeIndex].split("-");
-  const icon = configSplit[0];
-  const shape = configSplit[1];
+function getConfiguration() {
+  colorSelect = document.getElementById("color").value;
+  shapeSelect = document.getElementById("shape").value;
+  const configSplit = shapeSelect.split("-");
+  icon = configSplit[0];
+  shape = configSplit[1];
 
-  return { color: colorConfigurations[colorIndex], icon: icon, shape: shape };
+  return { color: colorConfigurations[colorSelect], icon: icon, shape: shape };
 }
 
 function shuffleIcons(array) {
@@ -138,7 +141,10 @@ function done() {
 //csv file is created and ready to download
 function saveToCsv() {
   var encodedUri, link;
-  let csvContent = "data:text/csv;charset=utf-8,TestResults\n";
+  let csvContent = "data:text/csv;charset=utf-8,TestResults,\n";
+  csvContent += colorArr[colorSelect] + "," + "\r\n";
+  csvContent += icon + "," + "\r\n";
+  csvContent += shape + "," + "\r\n";
   arrayOfTimes.forEach(function (infoArray) {
     let row = infoArray + ",";
     csvContent += row + "\r\n";
