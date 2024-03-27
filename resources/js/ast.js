@@ -9,8 +9,6 @@ const shapeConfigurations = [
   "facebook-outlined",
   "instagram-filled",
   "instagram-outlined",
-  "messenger-filled",
-  "messenger-outlined",
   "tiktok-filled",
   "tiktok-outlined",
   "x-filled",
@@ -27,13 +25,9 @@ const colorConfigurations = [
   {
     blue: "filter: invert(9%) sepia(100%) saturate(7207%) hue-rotate(248deg) brightness(89%) contrast(144%);",
   },
-  {
-    black:
-      "filter: invert(0%) sepia(79%) saturate(14%) hue-rotate(316deg) brightness(91%) contrast(100%);",
-  },
 ];
 
-const colorArr = ["red", "yellow", "blue", "black"]
+const colorArr = ["red", "yellow", "blue"]
 
 let promptText;
 let config;
@@ -73,7 +67,7 @@ function displayPrompt() {
 }
 
 function displayIcons() {
-  const iconNames = ["facebook", "messenger", "instagram", "tiktok", "x"];
+  const iconNames = ["facebook", "instagram", "tiktok", "x"];
   const shuffledIcons = shuffleIcons(iconNames);
 
   shuffledIcons.forEach((iconName) => {
