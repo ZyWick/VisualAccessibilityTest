@@ -11,6 +11,7 @@
 <body>
     <div id="start" class="centered w50">
         <h3>Welcome to the Visual Accessibility for Astigmatism Testing App</h3>
+        <h4>Please remove your glasses (if you have one) before you begin the test.</h4>
         <p> Your Name: 
             <input id="name" type="text">
         </p>
@@ -21,32 +22,16 @@
         </p>
         <p> Astigmatism Type:    
             <select id="type">
-                <option value="yourself" selected>I'm not sure</option>
-                <option value="similar">Myopic Astigmatism</option>
-                <option value="dissimilar">Hyperopic Astigmatism</option>
-                <option value="extra">Mixed Astigmatism</option>
+                <option value="notsure" selected>I'm not sure</option>
+                <option value="myopic">Myopic Astigmatism</option>
+                <option value="hyperopic">Hyperopic Astigmatism</option>
+                <option value="mixed">Mixed Astigmatism</option>
             </select>
         <p>
 
-        Press the button to begin the test. You're goal is to tap the 
-        <select id="color">
-            <option value="0" selected>red</option>
-            <option value="1">yellow</option>
-            <option value="2">blue</option>
-        </select>
-        <select id="shape">
-            <option value="facebook-filled">facebook-filled</option>
-            <option value="facebook-outlined">facebook-outlined</option>
-            <option value="instagram-filled">instagram-filled</option>
-            <option value="instagram-outlined">instagram-outlined</option>
-            <option value="tiktok-filled">tiktok-filled</option>
-            <option value="tiktok-outlined">tiktok-outlined</option>
-            <option value="x-filled">x-filled</option>
-            <option value="x-outlined">x-outlined</option>
-        </select>
-        
-         button as 
-        QUICKLY and as ACCURATELY as possible. Please be sure not to change the orientation 
+        Press the button to begin the test.You're goal is to <strong>tap the 
+         icons</strong> as 
+         <strong>QUICKLY and as ACCURATELY as possible </strong> . Please be sure not to change the orientation 
         of the device or resize the window. For consistency, be sure to interact the same way 
         throughout the test.
              <br><br>        
@@ -58,8 +43,12 @@
         <div class="icon-container" id="iconContainer" >
         </div>
     
-        <div class="prompt-container" id="prompt-cont">
-        </div>
+        <h1 class="prompt-container prompt" id="prompt-cont">
+        </h1>
+
+        <h1 class="prompt" id="notify"></h1>
+        <div id="next-button"></div>
+
 
         <div id="results" class="centered"></div>
     </div>
