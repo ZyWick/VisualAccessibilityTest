@@ -116,12 +116,12 @@ iconContainer.addEventListener("click", (e) => {
 
 function generateCsv(allData) {
   const fileName = (pname.value === "" ? "testResult" : pname.value) + "_" + type.value;
-  let csvContent = "TestResults,\n";
-  csvContent += "Icon,Config,Time (ms),Accuracy (%),\n";
+  let csvContent = "TestResults, (1st-5th row = time (ms) 6th row = accuracy)\n";
+  // csvContent += "Icon,Config,Time (ms),Accuracy (%),\n";
   allData.forEach((data) => {
-    csvContent += `${data.iconName},${data.config},`;
+    csvContent += `${data.iconName}${data.config},\n`;
     data.arrayOfTimes.forEach((time) => {
-      csvContent += `${time},`;
+      csvContent += `${time},\n`;
     });
     csvContent += `${data.accuracy}\n`;
   });
